@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order confirmed · QA Mart</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-page="confirmation">
+  <header class="topbar">
+    <a class="brand" href="/products">QA Mart</a> <span class="ui-tag">v2 design</span>
+    <nav aria-label="Main">
+      <a href="/products">Products</a>
+      <a href="/cart" id="cart-link" data-v2-id="nav-basket">Cart <span class="cart-badge" data-testid="cart-count">0</span></a>
+    </nav>
+    <span class="greeting" data-testid="greeting"></span>
+    <button type="button" class="btn btn-ghost" id="logout" data-v2-id="signout">Sign out</button>
+  </header>
+  <main>
+    <h1>Order confirmed</h1>
+    <div id="order-details" class="card" hidden>
+      <p>Your order number is <strong data-testid="order-id"></strong>.</p>
+      <p>Amount paid: <strong data-testid="order-paid"></strong></p>
+      <p><a href="/products">Continue shopping</a></p>
+    </div>
+  </main>
+  <footer class="site-footer">QA Mart training app · Design: <a href="?ui=v1">v1</a> | <a href="?ui=v2">v2 (redesign)</a></footer>
+</body>
+</html>

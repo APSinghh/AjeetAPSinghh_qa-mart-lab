@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout · QA Mart</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-page="checkout">
+  <header class="topbar">
+    <a class="brand" href="/products">QA Mart</a> <span class="ui-tag">v2 design</span>
+    <nav aria-label="Main">
+      <a href="/products">Products</a>
+      <a href="/cart" id="cart-link" data-v2-id="nav-basket">Cart <span class="cart-badge" data-testid="cart-count">0</span></a>
+    </nav>
+    <span class="greeting" data-testid="greeting"></span>
+    <button type="button" class="btn btn-ghost" id="logout" data-v2-id="signout">Sign out</button>
+  </header>
+  <main>
+    <h1>Checkout</h1>
+    <p id="checkout-empty" hidden>Your cart is empty. <a href="/products">Add something first</a>.</p>
+    <div class="layout">
+      <form id="checkout-form" class="card" novalidate aria-label="Delivery details">
+        <h2>Delivery details</h2>
+        <div class="form-row"><label for="full-name">Full name</label><input id="full-name" data-v2-id="ship-name" name="fullName" autocomplete="name" aria-errormessage="err-name"><p class="field-error" id="err-name" hidden></p></div>
+        <div class="form-row"><label for="mobile">Mobile number</label><input id="mobile" data-v2-id="ship-phone" name="mobile" inputmode="numeric" autocomplete="tel" aria-errormessage="err-mobile"><p class="field-error" id="err-mobile" hidden></p></div>
+        <div class="form-row"><label for="address">Delivery address</label><textarea id="address" data-v2-id="ship-address" name="address" rows="3" aria-errormessage="err-address"></textarea><p class="field-error" id="err-address" hidden></p></div>
+        <div class="form-row"><label for="pin">PIN code</label><input id="pin" data-v2-id="ship-pin" name="pin" inputmode="numeric" autocomplete="postal-code" aria-errormessage="err-pin"><p class="field-error" id="err-pin" hidden></p></div>
+        <button type="submit" class="btn btn-primary" data-action="place-order" data-v2-wrap>Place order</button>
+      </form>
+      <section class="card" aria-labelledby="summary-title">
+        <h2 id="summary-title">Order summary</h2>
+        <div class="form-row"><label for="coupon">Coupon code</label><input id="coupon" data-v2-id="promo" name="coupon" autocomplete="off"></div>
+        <button type="button" class="btn" data-action="apply-coupon" data-v2-wrap>Apply coupon</button>
+        <p class="notice" data-testid="coupon-message" role="status" aria-live="polite"></p>
+        <dl class="summary">
+          <dt>Subtotal</dt><dd data-testid="order-subtotal">₹0</dd>
+          <dt>Discount</dt><dd data-testid="order-discount">₹0</dd>
+          <dt>Total</dt><dd data-testid="order-total">₹0</dd>
+        </dl>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">QA Mart training app · Design: <a href="?ui=v1">v1</a> | <a href="?ui=v2">v2 (redesign)</a></footer>
+</body>
+</html>

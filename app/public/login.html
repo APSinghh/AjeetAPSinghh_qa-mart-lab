@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · QA Mart</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-page="login">
+  
+  <main>
+    <h1>Sign in to QA Mart</h1>
+    <form id="login-form" class="card" novalidate>
+      <div class="form-row"><label for="email">Email</label><input id="email" data-v2-id="user-email" name="email" type="email" autocomplete="username"></div>
+      <div class="form-row"><label for="password">Password</label><input id="password" data-v2-id="user-secret" name="password" type="password" autocomplete="current-password"></div>
+      <p class="error" role="alert" hidden></p>
+      <button id="login-btn" data-v2-id="signin-submit" data-v2-wrap class="btn btn-primary" type="submit">Sign in</button>
+    </form>
+  </main>
+  <footer class="site-footer">QA Mart training app · Design: <a href="?ui=v1">v1</a> | <a href="?ui=v2">v2 (redesign)</a></footer>
+</body>
+</html>

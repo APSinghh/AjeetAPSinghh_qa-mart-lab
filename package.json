@@ -1,0 +1,22 @@
+{
+  "name": "qa-mart-lab",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Day 3 lab: Playwright review + AI-assisted authoring against the QA Mart sample app",
+  "scripts": {
+    "start": "node app/server.js",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:v2": "playwright test --project=ui-v2",
+    "test:legacy": "playwright test --project=legacy",
+    "flaky": "playwright test --project=legacy --repeat-each=5",
+    "codegen": "playwright codegen --output tests/lab/recorded.spec.ts http://localhost:3000/login",
+    "demo:trace": "playwright test --project=demo --trace on",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "~1.64.0",
+    "@types/node": "^24.0.0"
+  },
+  "engines": { "node": ">=20" }
+}

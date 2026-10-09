@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your cart · QA Mart</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-page="cart">
+  <header class="topbar">
+    <a class="brand" href="/products">QA Mart</a> <span class="ui-tag">v2 design</span>
+    <nav aria-label="Main">
+      <a href="/products">Products</a>
+      <a href="/cart" id="cart-link" data-v2-id="nav-basket">Cart <span class="cart-badge" data-testid="cart-count">0</span></a>
+    </nav>
+    <span class="greeting" data-testid="greeting"></span>
+    <button type="button" class="btn btn-ghost" id="logout" data-v2-id="signout">Sign out</button>
+  </header>
+  <main>
+    <h1>Your cart</h1>
+    <p id="cart-empty" hidden>Your cart is empty. <a href="/products">Continue shopping</a></p>
+    <table class="cart-table" aria-label="Cart items">
+      <thead><tr><th scope="col">Item</th><th scope="col">Price</th><th scope="col">Quantity</th><th scope="col">Total</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <p>Subtotal: <strong data-testid="cart-subtotal">₹0</strong></p>
+    <button type="button" class="btn btn-primary" data-action="checkout" data-v2-wrap>Checkout</button>
+  </main>
+  <footer class="site-footer">QA Mart training app · Design: <a href="?ui=v1">v1</a> | <a href="?ui=v2">v2 (redesign)</a></footer>
+</body>
+</html>
