@@ -1,0 +1,329 @@
+{
+  "suites": [
+    {
+      "title": "seeded/coupon-boundary.spec.ts",
+      "file": "seeded/coupon-boundary.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "FLAT100 boundary (US-101 AC3)",
+          "file": "seeded/coupon-boundary.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "API: an order of exactly ₹500 gets ₹100 off",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "seeded",
+                  "projectName": "seeded",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 29,
+                      "error": {
+                        "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 200\nReceived: 422",
+                        "stack": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 200\nReceived: 422\n    at <repo>/tests/seeded/coupon-boundary.spec.ts:8:20",
+                        "location": {
+                          "file": "<repo>/tests/seeded/coupon-boundary.spec.ts",
+                          "column": 20,
+                          "line": 8
+                        },
+                        "snippet": "   6 |   test('API: an order of exactly ₹500 gets ₹100 off', async ({ api }) => {\n   7 |     const { status, body } = await api.validateCoupon(coupons.flat, 500, users.standard.email);\n>  8 |     expect(status).toBe(200);\n     |                    ^\n   9 |     expect(body.discount).toBe(100);\n  10 |   });\n  11 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "<repo>/tests/seeded/coupon-boundary.spec.ts",
+                            "column": 20,
+                            "line": 8
+                          },
+                          "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 200\nReceived: 422\n\n   6 |   test('API: an order of exactly ₹500 gets ₹100 off', async ({ api }) => {\n   7 |     const { status, body } = await api.validateCoupon(coupons.flat, 500, users.standard.email);\n>  8 |     expect(status).toBe(200);\n     |                    ^\n   9 |     expect(body.discount).toBe(100);\n  10 |   });\n  11 |\n    at <repo>/tests/seeded/coupon-boundary.spec.ts:8:20"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-10-27T05:29:10.093Z",
+                      "annotations": [],
+                      "errorLocation": {
+                        "file": "<repo>/tests/seeded/coupon-boundary.spec.ts",
+                        "column": 20,
+                        "line": 8
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1ff9217710def423ec7c-937f197ad0b2725134c6",
+              "file": "seeded/coupon-boundary.spec.ts",
+              "line": 6,
+              "column": 7
+            },
+            {
+              "title": "UI: one Test Charter Notebook (₹500) with FLAT100 shows ₹100 discount",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "seeded",
+                  "projectName": "seeded",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 6109,
+                      "error": {
+                        "message": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByTestId('order-discount')\nExpected: \"₹100\"\nReceived: \"₹0\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" getByTestId('order-discount') with timeout 5000ms\n  - waiting for getByTestId('order-discount')\n    14 × locator resolved to <dd data-testid=\"order-discount\">₹0</dd>\n       - unexpected value \"₹0\"\n",
+                        "stack": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByTestId('order-discount')\nExpected: \"₹100\"\nReceived: \"₹0\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" getByTestId('order-discount') with timeout 5000ms\n  - waiting for getByTestId('order-discount')\n    14 × locator resolved to <dd data-testid=\"order-discount\">₹0</dd>\n       - unexpected value \"₹0\"\n\n    at <repo>/tests/seeded/coupon-boundary.spec.ts:23:54",
+                        "location": {
+                          "file": "<repo>/tests/seeded/coupon-boundary.spec.ts",
+                          "column": 54,
+                          "line": 23
+                        },
+                        "snippet": "  21 |     await page.getByRole('button', { name: 'Apply coupon' }).click();\n  22 |\n> 23 |     await expect(page.getByTestId('order-discount')).toHaveText('₹100');\n     |                                                      ^\n  24 |     await expect(page.getByTestId('order-total')).toHaveText('₹400');\n  25 |   });\n  26 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "<repo>/tests/seeded/coupon-boundary.spec.ts",
+                            "column": 54,
+                            "line": 23
+                          },
+                          "message": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByTestId('order-discount')\nExpected: \"₹100\"\nReceived: \"₹0\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" getByTestId('order-discount') with timeout 5000ms\n  - waiting for getByTestId('order-discount')\n    14 × locator resolved to <dd data-testid=\"order-discount\">₹0</dd>\n       - unexpected value \"₹0\"\n\n\n  21 |     await page.getByRole('button', { name: 'Apply coupon' }).click();\n  22 |\n> 23 |     await expect(page.getByTestId('order-discount')).toHaveText('₹100');\n     |                                                      ^\n  24 |     await expect(page.getByTestId('order-total')).toHaveText('₹400');\n  25 |   });\n  26 | });\n    at <repo>/tests/seeded/coupon-boundary.spec.ts:23:54"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-10-27T05:29:10.092Z",
+                      "annotations": [],
+                      "errorLocation": {
+                        "file": "<repo>/tests/seeded/coupon-boundary.spec.ts",
+                        "column": 54,
+                        "line": 23
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1ff9217710def423ec7c-e4620b903af405aa0308",
+              "file": "seeded/coupon-boundary.spec.ts",
+              "line": 12,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "seeded/order-security.spec.ts",
+      "file": "seeded/order-security.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "POST /api/orders without a sign-in token is rejected with 401",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "seeded",
+              "projectName": "seeded",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "failed",
+                  "duration": 28,
+                  "error": {
+                    "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 401\nReceived: 201",
+                    "stack": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 401\nReceived: 201\n    at <repo>/tests/seeded/order-security.spec.ts:10:18",
+                    "location": {
+                      "file": "<repo>/tests/seeded/order-security.spec.ts",
+                      "column": 18,
+                      "line": 10
+                    },
+                    "snippet": "   8 |     items: [{ id: products.mug.id, qty: 1 }],\n   9 |   });\n> 10 |   expect(status).toBe(401);\n     |                  ^\n  11 | });\n  12 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "<repo>/tests/seeded/order-security.spec.ts",
+                        "column": 18,
+                        "line": 10
+                      },
+                      "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 401\nReceived: 201\n\n   8 |     items: [{ id: products.mug.id, qty: 1 }],\n   9 |   });\n> 10 |   expect(status).toBe(401);\n     |                  ^\n  11 | });\n  12 |\n    at <repo>/tests/seeded/order-security.spec.ts:10:18"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:29:10.088Z",
+                  "annotations": [],
+                  "errorLocation": {
+                    "file": "<repo>/tests/seeded/order-security.spec.ts",
+                    "column": 18,
+                    "line": 10
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "be35390b995308eb49fd-e8fb36523806e63c97fb",
+          "file": "seeded/order-security.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "seeded/stock-limit.spec.ts",
+      "file": "seeded/stock-limit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "an order above the stock limit is rejected with 422",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "seeded",
+              "projectName": "seeded",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 3,
+                  "status": "failed",
+                  "duration": 29,
+                  "error": {
+                    "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 201",
+                    "stack": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 201\n    at <repo>/tests/seeded/stock-limit.spec.ts:11:18",
+                    "location": {
+                      "file": "<repo>/tests/seeded/stock-limit.spec.ts",
+                      "column": 18,
+                      "line": 11
+                    },
+                    "snippet": "   9 |     login.body.token,\n  10 |   );\n> 11 |   expect(status).toBe(422);\n     |                  ^\n  12 |   expect(body.error).toContain('Desk Lamp');\n  13 | });\n  14 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "<repo>/tests/seeded/stock-limit.spec.ts",
+                        "column": 18,
+                        "line": 11
+                      },
+                      "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 201\n\n   9 |     login.body.token,\n  10 |   );\n> 11 |   expect(status).toBe(422);\n     |                  ^\n  12 |   expect(body.error).toContain('Desk Lamp');\n  13 | });\n  14 |\n    at <repo>/tests/seeded/stock-limit.spec.ts:11:18"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:29:10.089Z",
+                  "annotations": [],
+                  "errorLocation": {
+                    "file": "<repo>/tests/seeded/stock-limit.spec.ts",
+                    "column": 18,
+                    "line": 11
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6296413330941e3614fa-f7558f3d10fd02fda799",
+          "file": "seeded/stock-limit.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "seeded/welcome50-reuse.spec.ts",
+      "file": "seeded/welcome50-reuse.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "WELCOME50 is rejected once the shopper has placed an order",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "seeded",
+              "projectName": "seeded",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 4,
+                  "status": "failed",
+                  "duration": 33,
+                  "error": {
+                    "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 200",
+                    "stack": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 200\n    at <repo>/tests/seeded/welcome50-reuse.spec.ts:14:18",
+                    "location": {
+                      "file": "<repo>/tests/seeded/welcome50-reuse.spec.ts",
+                      "column": 18,
+                      "line": 14
+                    },
+                    "snippet": "  12 |\n  13 |   const { status, body } = await api.validateCoupon(coupons.firstOrder, products.mouse.price, users.standard.email);\n> 14 |   expect(status).toBe(422);\n     |                  ^\n  15 |   expect(body.message).toBe('WELCOME50 is for your first order only');\n  16 | });\n  17 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "<repo>/tests/seeded/welcome50-reuse.spec.ts",
+                        "column": 18,
+                        "line": 14
+                      },
+                      "message": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 422\nReceived: 200\n\n  12 |\n  13 |   const { status, body } = await api.validateCoupon(coupons.firstOrder, products.mouse.price, users.standard.email);\n> 14 |   expect(status).toBe(422);\n     |                  ^\n  15 |   expect(body.message).toBe('WELCOME50 is for your first order only');\n  16 | });\n  17 |\n    at <repo>/tests/seeded/welcome50-reuse.spec.ts:14:18"
+                    }
+                  ],
+                  "retry": 0,
+                  "startTime": "2026-10-27T05:29:10.086Z",
+                  "annotations": [],
+                  "errorLocation": {
+                    "file": "<repo>/tests/seeded/welcome50-reuse.spec.ts",
+                    "column": 18,
+                    "line": 14
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bb433df6fef889b6ff73-bb5f173de7273974c048",
+          "file": "seeded/welcome50-reuse.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T05:29:09.754Z",
+    "duration": 6679.653,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

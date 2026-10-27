@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: QA Mart API
+  version: 4.0.0
+  description: Training API served by app/server.js on http://localhost:3000. Responses are JSON.
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/health:
+    get:
+      summary: Liveness check
+      responses:
+        '200': { description: "{ status: 'ok' }" }
+  /api/products:
+    get:
+      summary: List products (random 300-1700 ms delay)
+      responses:
+        '200': { description: "{ products: [{ id, name, price }] }" }
+  /api/inventory:
+    get:
+      summary: Stock limit per product id (US-103)
+      responses:
+        '200': { description: "{ stock: { p1: 10, ... } }" }
+  /api/login:
+    post:
+      summary: Sign in (US-104)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, required: [email, password], properties: { email: { type: string }, password: { type: string } } }
+      responses:
+        '200': { description: "{ email, name, token }" }
+        '401': { description: Invalid email or password }
+        '423': { description: Account locked }
+  /api/coupons/validate:
+    post:
+      summary: Validate a coupon for a subtotal (US-101)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, required: [code, subtotal], properties: { code: { type: string }, subtotal: { type: number }, email: { type: string } } }
+      responses:
+        '200': { description: "{ valid: true, code, discount, message }" }
+        '400': { description: subtotal is not a number }
+        '422': { description: "{ valid: false, message }" }
+  /api/orders:
+    get:
+      summary: Orders of the signed-in shopper, newest first (US-102)
+      security: [{ bearer: [] }]
+      responses:
+        '200': { description: "{ orders: [{ orderId, email, items, coupon, subtotal, discount, total, createdAt }] }" }
+        '401': { description: Missing or unknown token }
+    post:
+      summary: Place an order (US-103, US-105)
+      security: [{ bearer: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, items]
+              properties:
+                email: { type: string }
+                coupon: { type: string }
+                items: { type: array, items: { type: object, required: [id, qty], properties: { id: { type: string }, qty: { type: integer, minimum: 1 } } } }
+      responses:
+        '201': { description: "{ orderId, subtotal, discount, total }" }
+        '400': { description: Cart empty or unknown item }
+        '401': { description: Not signed in }
+        '403': { description: Token does not match email }
+        '422': { description: Coupon invalid or product unavailable }
+  /api/test/orders:
+    get:
+      summary: All orders, for tests and tools. Disabled when QAMART_TEST_API=0.
+      responses:
+        '200': { description: "{ orders: [...] }" }
+  /api/test/reset:
+    post:
+      summary: Clear all orders and restart order numbers at QM-10001. Disabled when QAMART_TEST_API=0.
+      responses:
+        '200': { description: "{ status: 'reset' }" }
+components:
+  securitySchemes:
+    bearer: { type: http, scheme: bearer }
