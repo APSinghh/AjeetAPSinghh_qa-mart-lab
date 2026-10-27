@@ -14,8 +14,11 @@
   const saveCart = (c) => { write('qm_cart', c); updateBadge(); };
   const cartCount = (c = cart()) => Object.values(c).reduce((a, b) => a + b, 0);
 
-  async function api(path, body) {
-    const res = await fetch(path, body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : undefined);
+  async function api(path, body, token) {
+    const headers = {};
+    if (body) headers['Content-Type'] = 'application/json';
+    if (token) headers.Authorization = 'Bearer ' + token;
+    const res = await fetch(path, { method: body ? 'POST' : 'GET', headers, body: body ? JSON.stringify(body) : undefined });
     const data = await res.json().catch(() => ({}));
     return { ok: res.ok, status: res.status, data };
   }
@@ -88,10 +91,12 @@
       localStorage.removeItem('qm_products');
       let items;
       try { items = await products(); } catch { status.textContent = 'Could not load products. Refresh the page.'; return; }
+      const stock = (await api('/api/inventory')).data.stock || {};
+      const soldOut = (p) => stock[p.id] === 0;
       if (isV2) items = [...items].reverse();
       list.innerHTML = items.map((p) => isV2
-        ? `<li class="tile"><div class="tile__body"><h2>${esc(p.name)}</h2><p class="tile__price">${money(p.price)}</p></div><div class="tile__actions"><button type="button" class="button button--cta" data-id="${p.id}">Add to cart</button></div></li>`
-        : `<li class="product-card"><h2>${esc(p.name)}</h2><p class="price">${money(p.price)}</p><button type="button" class="btn btn-primary" data-id="${p.id}">Add to cart</button></li>`).join('');
+        ? `<li class="tile"><div class="tile__body"><h2>${esc(p.name)}</h2><p class="tile__price">${money(p.price)}</p>${soldOut(p) ? '<p class="stock">Out of stock</p>' : ''}</div><div class="tile__actions"><button type="button" class="button button--cta" data-id="${p.id}"${soldOut(p) ? ' disabled' : ''}>Add to cart</button></div></li>`
+        : `<li class="product-card"><h2>${esc(p.name)}</h2><p class="price">${money(p.price)}</p>${soldOut(p) ? '<p class="stock">Out of stock</p>' : ''}<button type="button" class="btn btn-primary" data-id="${p.id}"${soldOut(p) ? ' disabled' : ''}>Add to cart</button></li>`).join('');
       status.hidden = true;
       list.addEventListener('click', (e) => {
         const btn = e.target.closest('button[data-id]');
@@ -175,6 +180,20 @@
         localStorage.removeItem('qm_cart');
         location.assign('/confirmation');
       });
+    },
+
+    async orders() {
+      const s = requireSession(); if (!s) return;
+      const status = document.getElementById('orders-status');
+      const { ok, data } = await api('/api/orders', null, s.token);
+      if (!ok) { status.textContent = 'Could not load your orders. Refresh the page.'; return; }
+      status.hidden = true;
+      if (!data.orders.length) { document.getElementById('orders-empty').hidden = false; return; }
+      const table = document.querySelector('table');
+      table.hidden = false;
+      document.querySelector('tbody').innerHTML = data.orders.map((o) => `<tr>
+        <th scope="row">${esc(o.orderId)}</th><td>${o.items.reduce((a, i) => a + i.qty, 0)}</td>
+        <td>${esc(o.coupon || '—')}</td><td>${money(o.discount)}</td><td>${money(o.total)}</td></tr>`).join('');
     },
 
     confirmation() {

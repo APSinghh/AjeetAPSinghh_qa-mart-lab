@@ -65,3 +65,5 @@ h1 { font-size: 28px; margin: 8px 0 16px; }
 [data-ui="v2"] a { color:#7ce2b5; }
 [data-ui="v2"] .field-error, [data-ui="v2"] .error, [data-ui="v2"] .notice.bad { color:#ff8a80; }
 [data-ui="v2"] .notice, [data-ui="v2"] .toast { color:#7ce2b5; }
+.stock { color:var(--err); font-size:14px; margin:0; }
+[data-ui="v2"] .stock { color:#ff8a80; }

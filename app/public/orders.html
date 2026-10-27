@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order history · QA Mart</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-page="orders">
+  <header class="topbar">
+    <a class="brand" href="/products">QA Mart</a> <span class="ui-tag">v2 design</span>
+    <nav aria-label="Main">
+      <a href="/products">Products</a>
+      <a href="/orders" id="orders-link" data-v2-id="nav-orders">Orders</a>
+      <a href="/cart" id="cart-link" data-v2-id="nav-basket">Cart <span class="cart-badge" data-testid="cart-count">0</span></a>
+    </nav>
+    <span class="greeting" data-testid="greeting"></span>
+    <button type="button" class="btn btn-ghost" id="logout" data-v2-id="signout">Sign out</button>
+  </header>
+  <main>
+    <h1>Order history</h1>
+    <p id="orders-status">Loading your orders…</p>
+    <p id="orders-empty" hidden>You have no orders yet. <a href="/products">Start shopping</a></p>
+    <table class="cart-table" aria-label="Your orders" hidden>
+      <thead><tr><th scope="col">Order</th><th scope="col">Items</th><th scope="col">Coupon</th><th scope="col">Discount</th><th scope="col">Total</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </main>
+  <footer class="site-footer">QA Mart training app · Design: <a href="?ui=v1">v1</a> | <a href="?ui=v2">v2 (redesign)</a></footer>
+</body>
+</html>
