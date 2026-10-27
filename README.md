@@ -58,7 +58,7 @@ Use the footer links to switch between the v1 design and the v2 redesign. The ap
 - `docs/api/openapi.yaml`: API contract
 - `exercises/`: the six Copilot customization exercises (start at `00-start-here.md`)
 - `solutions/`: trainer reference (not loaded by Copilot)
-- `.github/`: where testers build their customizations (empty on purpose)
+- `.github/`: where testers build their customizations (empty on purpose, except `copilot/settings.json`, which recommends the team's agent plugin)
 - `scripts/`: `lint-specs.cjs` and `mcp-smoke.cjs`
 
 ## App features

@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "qa-mart-lab": {
+      "source": {
+        "source": "github",
+        "repo": "happiestmindslabsu2/qa-mart-lab"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "playwright-qa-toolkit@qa-mart-lab": true
+  }
+}
