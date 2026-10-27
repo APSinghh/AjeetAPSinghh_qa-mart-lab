@@ -46,7 +46,7 @@ application behavior.
 - Import `test` and `expect` from `tests/fixtures.ts` (relative path from the generated file) and use the `signedInPage` or `api` fixture instead of repeating sign-in.
 - Follow `docs/team-conventions.md`: `getByRole`, `getByLabel`, `getByTestId`, web-first assertions, no `waitForTimeout`, no hard-coded credentials or URLs (take them from `tests/test-data.ts`).
 - Put the story id and acceptance criterion in the test title, for example `US-103 AC1: sold-out product cannot be added`.
-- Save under `tests/<area>/`, never under `tests/seeded/` or `tests/legacy/`.
+- Save under `tests/lab/`, never under `tests/seeded/` or `tests/legacy/`.
 - After writing a test, run `npm run typecheck` and `npm run lint:specs` and fix what they report.
 
 # For each test you generate

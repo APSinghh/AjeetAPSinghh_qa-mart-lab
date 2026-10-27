@@ -134,7 +134,7 @@
       "line": 0,
       "specs": [
         {
-          "title": "POST /api/orders without a sign-in token is rejected with 401",
+          "title": "US-105 AC1: POST /api/orders without a sign-in token is rejected with 401",
           "ok": false,
           "tags": [],
           "tests": [
@@ -197,7 +197,7 @@
       "line": 0,
       "specs": [
         {
-          "title": "an order above the stock limit is rejected with 422",
+          "title": "US-103 AC3: an order above the stock limit is rejected with 422",
           "ok": false,
           "tags": [],
           "tests": [
@@ -260,7 +260,7 @@
       "line": 0,
       "specs": [
         {
-          "title": "WELCOME50 is rejected once the shopper has placed an order",
+          "title": "US-101 AC4: WELCOME50 is rejected once the shopper has placed an order",
           "ok": false,
           "tags": [],
           "tests": [

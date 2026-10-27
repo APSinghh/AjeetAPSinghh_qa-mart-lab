@@ -10,7 +10,7 @@ npm test            # should be green
 npm run test:seeded # should show 5 failures: that is on purpose
 npm run typecheck && npm run lint:specs
 ```
-If port 3000 is busy, set `PORT=3100` for every command.
+If port 3000 is busy, set `PORT=3100` for every command. Three things stay on 3000: the legacy test (on purpose), `npm run codegen` (use `npx playwright codegen --output tests/lab/recorded.spec.ts http://localhost:3100/login` instead) and the plugin's `mcp.json` (edit `QAMART_URL`).
 
 ## What you can build on
 | Ingredient | Where | Used by |
@@ -29,7 +29,7 @@ If port 3000 is busy, set `PORT=3100` for every command.
 | Bug and test-case templates | `docs/templates/` | prompts |
 
 ## The six exercises
-Each folder has two stories. Do story 1 in the session. Story 2 is the take-home.
+Each folder has two stories (04-agents has three: start with A3). Do story 1 in the session. Story 2 is the take-home.
 
 | # | Type | Where it goes | Harness to select in Chat |
 |---|---|---|---|

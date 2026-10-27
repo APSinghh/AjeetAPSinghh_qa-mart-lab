@@ -48,12 +48,13 @@ Playwright ships three custom agents, generated into your repository. They are n
 **Ingredients**: `tests/seed.spec.ts` (already in the repo: signed in, on the product list), `specs/` (plans), `docs/stories/`, `npm run test:seeded`.
 
 **Build, in three steps**
-1. Generate: `npx playwright init-agents --loop=vscode`. Look at what appeared: `.github/agents/playwright-test-*.agent.md` and `.vscode/mcp.json` (also a `.github/workflows` file for the cloud agent, which you can delete). Open each agent and read its `tools` list and its rules.
+1. Generate: `npx playwright init-agents --loop=vscode`. Look at what appeared: `.github/agents/playwright-test-*.agent.md` and `.vscode/mcp.json` (also a `.github/workflows` file for the cloud agent, which you can delete). Open each agent and read its `tools` list and its rules. The generated files pin `model: Claude Sonnet 4.6`; if your Copilot plan does not offer that model, delete the line (the reference versions in `solutions/playwright-agents/agents/` do).
 2. Run the loop on **US-103**: ask the planner for a plan from `docs/stories/US-103-stock-limits.md`, hand off to the generator, then run what it wrote.
 3. Adapt them. Edit the generated agents (they are yours now, but a regenerate overwrites them, so keep the edits small and re-apply them):
    - Planner: read the story and `docs/team-conventions.md` first, cite acceptance criteria, save as `specs/<story-id>.md`, add a handoff to the generator.
    - Generator: import from `tests/fixtures.ts`, use `signedInPage`, put the story id in each title, run `npm run typecheck` and `npm run lint:specs`, add a handoff to the healer.
    - Healer: this one matters most. Read what it does today: it may "fix assertions and expected values". Point it at `npm run test:seeded` and watch what it does to the planted bugs. Then add guardrails: it may fix locators, waits and data, never expected values, never `app/`; when the test matches the story it must use `test.fixme()` with a `BUG:` comment and report the bug.
+4. Put the seeded tests back before the next exercise: `git checkout tests/seeded`. The healer edits them, and Hook 1 needs them failing. `npm run test:seeded` should show 5 failures again.
 
 **Done when**
 - The planner's plan cites US-103 acceptance criteria and notes where the app disagrees with the story (the Desk Lamp limit).

@@ -1,5 +1,5 @@
 // QA Mart: sample shop for the Day 3 Playwright lab.
-// Zero dependencies. Needs Node 18 or newer. Start with: npm start
+// Zero dependencies. Needs Node 20 or newer. Start with: npm start
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -8,7 +8,7 @@ const crypto = require('node:crypto');
 
 const PORT = Number(process.env.PORT) || 3000;
 // Loopback only, so the reset endpoints are never reachable from other machines.
-const HOST = process.env.HOST || '127.0.0.1';
+const HOST = process.env.QAMART_HOST || '127.0.0.1';
 // /api/test/* helps tests and tools reset or inspect state. Set QAMART_TEST_API=0 to switch it off.
 const TEST_API = process.env.QAMART_TEST_API !== '0';
 const PUBLIC_DIR = path.join(__dirname, 'public');

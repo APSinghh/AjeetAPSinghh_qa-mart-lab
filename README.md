@@ -33,13 +33,13 @@ Use the footer links to switch between the v1 design and the v2 redesign. The ap
 | `npm test` | Runs your tests (chromium project) and writes `reports/results.json` |
 | `npm run test:ui` | Opens UI mode: watch, time-travel and pick locators |
 | `npm run codegen` | Records into `tests/lab/recorded.spec.ts` (needs `npm start` running) |
-| `npm run test:v2` | Runs every test, including the legacy suite, against the v2 redesign |
+| `npm run test:v2` | Runs your tests plus the legacy suite against the v2 redesign (not the seeded tests or the trainer demo) |
 | `npm run test:legacy` | Runs the inherited legacy test once |
 | `npm run flaky` | Runs the legacy test 5 times to expose flakiness |
 | `npm run test:seeded` | Runs correct tests that fail on purpose because of planted bugs (5 failures) |
 | `npm run typecheck` | `tsc --noEmit` over tests and pages |
 | `npm run lint:specs` | Convention check for specs and Page Objects (hard waits, XPath, hard-coded credentials, ...) |
-| `npm run mcp:smoke` | Starts the app and drives the trainer MCP server over stdio |
+| `npm run mcp:smoke` | Starts the app on port 3199 (`SMOKE_PORT` to change it) and drives the trainer MCP server over stdio |
 | `npm run report` | Opens the last HTML report |
 | `npm run demo:trace` | Trainer demo: one failing test with a full trace |
 
@@ -68,4 +68,4 @@ Sign in, products (some out of stock), cart, checkout with coupons, order confir
 asha@qamart.test, ravi@qamart.test, locked@qamart.test. Password for all: `Test@1234`.
 
 ## Port 3000 busy?
-`PORT=3100 npm test` (macOS/Linux) or `$env:PORT=3100; npm test` (PowerShell). For `npm start`, set PORT the same way. If tests behave strangely, check `lsof -i :3000`: Playwright reuses whatever answers on the port. The legacy test hard-codes `localhost:3000` on purpose (it is a review exercise), so with another `PORT` it fails with a connection error.
+`PORT=3100 npm test` (macOS/Linux) or `$env:PORT=3100; npm test` (PowerShell). For `npm start`, set PORT the same way. If tests behave strangely, check `lsof -i :3000`: Playwright reuses whatever answers on the port. The legacy test hard-codes `localhost:3000` on purpose (it is a review exercise), so with another `PORT` it fails with a connection error. `npm run codegen` and the plugin's `mcp.json` (`QAMART_URL`) also point at 3000: run `npx playwright codegen --output tests/lab/recorded.spec.ts http://localhost:3100/login` instead, and edit `QAMART_URL`.

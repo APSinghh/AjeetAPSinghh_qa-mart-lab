@@ -20,6 +20,8 @@ function paths(value, out = []) {
       if (PATH_KEY.test(k) && typeof v === 'string') out.push(v.replace(/^file:\/\//, ''));
       else paths(v, out);
     }
+  } else if (typeof value === 'string') {
+    for (const m of value.matchAll(/^\*\*\* (?:Add|Update) File:[ \t]*([^\r\n]+)/gm)) out.push(m[1].trim());
   }
   return out;
 }
