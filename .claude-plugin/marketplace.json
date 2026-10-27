@@ -1,0 +1,13 @@
+{
+  "name": "qa-mart-lab",
+  "owner": {
+    "name": "happiestmindslabsu2"
+  },
+  "plugins": [
+    {
+      "name": "playwright-qa-toolkit",
+      "source": "./playwright-qa-toolkit",
+      "description": "A minimal QA toolkit for reviewing Playwright tests and analyzing test failures."
+    }
+  ]
+}
