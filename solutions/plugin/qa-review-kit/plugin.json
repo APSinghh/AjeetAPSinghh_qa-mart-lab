@@ -1,0 +1,8 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "qa-review-kit",
+  "version": "1.0.0",
+  "description": "Review kit for Playwright suites: failure-analysis skill, test-reviewer agent and a lint-feedback hook.",
+  "keywords": ["playwright", "review"],
+  "license": "MIT"
+}

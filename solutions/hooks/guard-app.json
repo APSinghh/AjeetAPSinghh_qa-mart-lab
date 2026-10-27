@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "matcher": "edit|create",
+        "command": "node .github/hooks/guard-app.cjs",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "qamart-qa-toolkit",
+  "version": "1.0.0",
+  "description": "QA Mart testing toolkit: failure analysis and coupon boundary skills, a test reviewer and explorer agent, a lint-feedback hook, and an MCP server for the app and Playwright results.",
+  "keywords": ["playwright", "testing", "qa", "mcp"],
+  "license": "MIT"
+}

@@ -1,0 +1,18 @@
+# Solutions (trainer reference)
+
+Working versions of everything the exercises ask testers to build. Nothing here is loaded by Copilot until it is copied into `.github/` or registered as a plugin.
+
+| Exercise | Story | Solution | Copy to |
+|---|---|---|---|
+| 1 Instructions | I1 | `instructions/copilot-instructions.md` (the original house rules) | `.github/copilot-instructions.md` |
+| 1 Instructions | I2 | `instructions/page-objects.instructions.md`, `specs.instructions.md` | `.github/instructions/` |
+| 2 Prompts | P1, P2 | `prompts/test-from-story.prompt.md`, `bug-report.prompt.md` | `.github/prompts/` |
+| 3 Skills | S1, S2 | `skills/coupon-boundary-testing/`, `skills/playwright-failure-analysis/` | `.github/skills/` |
+| 4 Agents | A1, A2 | `agents/test-planner.agent.md`, `test-reviewer.agent.md` (and the original `bug-triage.agent.md`) | `.github/agents/` |
+| 5 Hooks | H1, H2 | `hooks/guard-app.*`, `hooks/post-edit-checks.*` (and `log-tool.cjs` for the warm-up) | `.github/hooks/` |
+| 6 Plugins | PL1 | `plugin/qa-review-kit/` | register in `chat.pluginLocations` |
+| 6 Plugins | PL2 | `plugin/qamart-qa-toolkit/` (with the MCP server) | register in `chat.pluginLocations` |
+
+Trainer notes: `trainer/seeded-bugs.md` and `trainer/run-sheet.md`.
+
+Copies of the skill, agent and hook files also live inside the plugins. If you change one, change both.
