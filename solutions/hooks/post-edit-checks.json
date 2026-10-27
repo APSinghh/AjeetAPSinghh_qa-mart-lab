@@ -4,7 +4,7 @@
     "postToolUse": [
       {
         "type": "command",
-        "matcher": "edit|create",
+        "matcher": "edit|create|patch",
         "command": "node .github/hooks/post-edit-checks.cjs",
         "timeoutSec": 90
       }
