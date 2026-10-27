@@ -21,7 +21,7 @@ function paths(value, out = []) {
       else paths(v, out);
     }
   } else if (typeof value === 'string') {
-    for (const m of value.matchAll(/\*\*\* (?:Add|Update) File:\s*(\S+)/g)) out.push(m[1]);
+    for (const m of value.matchAll(/^\*\*\* (?:Add|Update) File:[ \t]*([^\r\n]+)/gm)) out.push(m[1].trim());
   }
   return out;
 }

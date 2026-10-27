@@ -34,7 +34,9 @@ for (const root of report.suites || []) {
     for (const test of spec.tests || []) {
       const results = test.results || [];
       const last = results[results.length - 1];
-      const key = `${spec.id}:${test.projectName}`;
+      // Same file, line and title: repeats of one test (--repeat-each gives each repeat its own spec.id),
+      // while data-driven cases declared on one line keep distinct titles.
+      const key = `${file}:${spec.line}:${spec.title}:${test.projectName}`;
       const seen = runs.get(key) || { passed: false, failed: false };
       for (const r of results) { if (r.status === 'passed') seen.passed = true; else if (r.status === 'failed' || r.status === 'timedOut') seen.failed = true; }
       runs.set(key, seen);

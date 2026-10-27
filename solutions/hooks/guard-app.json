@@ -4,7 +4,7 @@
     "preToolUse": [
       {
         "type": "command",
-        "matcher": "edit|create",
+        "matcher": "edit|create|patch",
         "command": "node .github/hooks/guard-app.cjs",
         "timeoutSec": 10
       }
