@@ -34,7 +34,7 @@ for (const root of report.suites || []) {
     for (const test of spec.tests || []) {
       const results = test.results || [];
       const last = results[results.length - 1];
-      const key = `${file}:${spec.line}:${test.projectName}`;
+      const key = `${spec.id}:${test.projectName}`;
       const seen = runs.get(key) || { passed: false, failed: false };
       for (const r of results) { if (r.status === 'passed') seen.passed = true; else if (r.status === 'failed' || r.status === 'timedOut') seen.failed = true; }
       runs.set(key, seen);
