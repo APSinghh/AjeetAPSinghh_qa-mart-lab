@@ -8,7 +8,7 @@ description: "Use when a Playwright run failed, when asked why tests failed, to 
 1. If there is no recent report, run `npm test` (or the project the user named) so the JSON reporter writes `reports/results.json`.
 2. Run the summary script from the repository root:
    `node .github/skills/playwright-failure-analysis/summarize-report.cjs reports/results.json`
-   (inside a plugin the path is `${PLUGIN_ROOT}/skills/playwright-failure-analysis/summarize-report.cjs`).
+   The script sits in the same folder as this SKILL.md. When the skill comes from a plugin, run the plugin's copy by its full path (`${PLUGIN_ROOT}` is not expanded inside a skill).
 3. Group the failures by likely cause:
    - **Application bug**: a correct test and a response that contradicts the story (check `docs/stories/`).
    - **Test bug**: wrong expectation, stale selector, shared state, hard wait.

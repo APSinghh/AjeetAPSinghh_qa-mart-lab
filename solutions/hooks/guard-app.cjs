@@ -31,7 +31,9 @@ function paths(value, out = []) {
 
 const root = path.resolve(event.cwd || process.cwd());
 const appDir = path.join(root, 'app') + path.sep;
-const touchesApp = EDIT_TOOL.test(toolName) && paths(args).some((p) => (path.resolve(root, p) + path.sep).startsWith(appDir));
+// macOS and Windows file systems ignore case: App/server.js, and c:\ vs C:\, are the same file.
+const norm = (p) => (process.platform === 'linux' ? p : p.toLowerCase());
+const touchesApp = EDIT_TOOL.test(toolName) && paths(args).some((p) => norm(path.resolve(root, p) + path.sep).startsWith(norm(appDir)));
 
 if (touchesApp) {
   const reason = 'app/ is read-only for agents. Keep the failing test and report the application bug instead.';

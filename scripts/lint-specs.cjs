@@ -28,7 +28,10 @@ function walk(target, out) {
 
 const args = process.argv.slice(2);
 const explicit = args.length > 0;
-const targets = (explicit ? args : ['tests', 'pages']).map((p) => path.resolve(root, p)).filter((p) => fs.existsSync(p));
+const resolved = (explicit ? args : ['tests', 'pages']).map((p) => path.resolve(root, p));
+const missing = explicit ? resolved.filter((p) => !fs.existsSync(p)) : [];
+if (missing.length) { console.error(`No such file or folder: ${missing.map((p) => path.relative(root, p)).join(', ')}`); process.exit(2); }
+const targets = resolved.filter((p) => fs.existsSync(p));
 const files = targets.flatMap((t) => walk(t, []));
 
 let findings = 0;

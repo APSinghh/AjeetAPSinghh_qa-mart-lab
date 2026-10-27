@@ -5,5 +5,6 @@ import { test, expect } from './fixtures';
 test.describe('Seed', () => {
   test('seed: signed-in shopper on the product list', async ({ signedInPage: page }) => {
     await expect(page.getByRole('heading', { name: 'Products' })).toBeVisible();
+    await expect(page.getByRole('list', { name: 'Products' }).getByRole('listitem')).toHaveCount(6);
   });
 });
