@@ -1,4 +1,4 @@
-# QA Mart lab (Day 3)
+# QA Mart lab
 
 A small shop app plus a Playwright project, for practising locators, Page Objects and AI-assisted authoring.
 Everything runs on your machine. The app has no dependencies besides Node.
