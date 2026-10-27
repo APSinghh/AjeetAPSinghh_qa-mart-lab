@@ -25,7 +25,7 @@ tools:
 handoffs:
   - label: Run and heal the tests
     agent: playwright-test-healer
-    prompt: Run the tests you just generated. Follow the guardrails: report application bugs, do not edit expectations to match the app.
+    prompt: "Run the tests you just generated. Follow the guardrails: report application bugs, do not edit expectations to match the app."
     send: false
 mcp-servers:
   playwright-test:

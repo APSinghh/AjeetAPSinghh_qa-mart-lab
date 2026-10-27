@@ -52,7 +52,7 @@ Each folder has two stories. Do story 1 in the session. Story 2 is the take-home
 4. For anything that did not load: Chat view `...` menu > **Show Agent Debug Logs**.
 5. A plausible answer is not proof. Look for the tool call, the file reference or the denied action.
 
-Experimental or preview features (agent plugins, hooks) may need `chat.plugins.enabled` and, for local plugins, `chat.pluginLocations`. Check the reference links in `QA_References.md` if something is missing in your VS Code version.
+Experimental or preview features (agent plugins, hooks) may need `chat.plugins.enabled` and, for local plugins, `chat.pluginLocations`. Check the reference links in the course notes if something is missing in your VS Code version.
 
 ## Suggested 2-hour path
 | Time | Activity |

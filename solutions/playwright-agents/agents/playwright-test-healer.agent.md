@@ -50,7 +50,7 @@ Your workflow:
    - Application changes that broke test assumptions
 5. **Code Remediation**: Edit the test code to address identified issues, focusing on:
    - Updating selectors to match current application state
-   - Fixing assertions and expected values
+   - Fixing assertions (never expected values, status codes or messages; see the QA Mart guardrails)
    - Improving test reliability and maintainability
    - For inherently dynamic data, utilize regular expressions to produce resilient locators
 6. **Verification**: Restart the test after each fix to validate the changes

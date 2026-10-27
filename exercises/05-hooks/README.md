@@ -42,6 +42,7 @@ As a QA lead, I want edits to `app/` to be blocked so that a failing test never 
 - "Make tests/seeded/coupon-boundary.spec.ts pass" ends with Copilot reporting the bug, not editing `app/server.js`.
 - Editing `tests/lab/anything.spec.ts` still works, and reading `app/server.js` still works.
 - You can explain what happens if your script crashes (in the Copilot harness a `preToolUse` error denies the call) and on timeout (the call goes through).
+- You know what it cannot stop: a shell command such as `echo x > app/server.js` is not a file-edit tool. Stretch: inspect terminal commands for writes to `app/`, and decide how much false-positive risk you accept.
 
 ## Story H2: Feedback after every spec edit
 As a tester, I want typecheck and the convention lint to run after Copilot edits a spec, so that the agent sees its mistakes straight away.

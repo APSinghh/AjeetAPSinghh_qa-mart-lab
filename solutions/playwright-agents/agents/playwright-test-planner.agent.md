@@ -27,7 +27,7 @@ tools:
 handoffs:
   - label: Generate the tests
     agent: playwright-test-generator
-    prompt: Generate Playwright tests from the plan you just saved in specs/, following docs/team-conventions.md.
+    prompt: "Generate Playwright tests from the plan you just saved in specs/, following docs/team-conventions.md."
     send: false
 mcp-servers:
   playwright-test:
