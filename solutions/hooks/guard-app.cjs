@@ -15,7 +15,7 @@ const PATH_KEY = /^(path|filepath|file_path|file|uri)$/i;
 
 // Collect every path-like value, including nested ones such as replacements[].filePath,
 // and the file headers inside patch text ("*** Update File: app/server.js").
-const PATCH_HEADER = /\*\*\* (?:Add|Update|Delete) File:\s*(\S+)/g;
+const PATCH_HEADER = /^\*\*\* (?:Add|Update|Delete) File:[ \t]*([^\r\n]+)/gm;
 function paths(value, out = []) {
   if (Array.isArray(value)) value.forEach((v) => paths(v, out));
   else if (value && typeof value === 'object') {
@@ -24,7 +24,7 @@ function paths(value, out = []) {
       else paths(v, out);
     }
   } else if (typeof value === 'string') {
-    for (const m of value.matchAll(PATCH_HEADER)) out.push(m[1]);
+    for (const m of value.matchAll(PATCH_HEADER)) out.push(m[1].trim());
   }
   return out;
 }
