@@ -8,7 +8,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [['list'], ['html', { open: 'never' }], ['json', { outputFile: 'reports/results.json' }]],
   use: {
     baseURL,
     // Locally keep a trace for every failure; on CI record on the first retry.
@@ -17,10 +17,10 @@ export default defineConfig({
   },
   projects: [
     {
-      // Your everyday run: everything except the legacy suite and the trainer demo.
+      // Your everyday run: everything except the legacy suite, the trainer demo and the seeded failures.
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      testIgnore: ['**/legacy/**', '**/trace-demo.spec.ts'],
+      testIgnore: ['**/legacy/**', '**/trace-demo.spec.ts', '**/seeded/**'],
     },
     {
       // Same tests against the "v2 redesign" of QA Mart, plus the legacy suite.
@@ -28,7 +28,14 @@ export default defineConfig({
       name: 'ui-v2',
       default: false,
       use: { ...devices['Desktop Chrome'], extraHTTPHeaders: { 'x-qamart-ui': 'v2' } },
-      testIgnore: ['**/trace-demo.spec.ts'],
+      testIgnore: ['**/trace-demo.spec.ts', '**/seeded/**'],
+    },
+    {
+      // Correct tests that fail on purpose, because QA Mart has planted bugs. Run with: npm run test:seeded
+      name: 'seeded',
+      default: false,
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '**/seeded/**/*.spec.ts',
     },
     {
       // The inherited Selenium-style script. Run with: npm run test:legacy
