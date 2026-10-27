@@ -38,7 +38,7 @@
 |---|---|
 | All tests fail on a tester's machine | Another process on port 3000; set `PORT=3100` |
 | `/name` prompt missing | Session target is not Local |
-| Hook does nothing | Session target is not Copilot, or JSON invalid. Run the script by hand with a sample event on stdin |
+| Hook does nothing | JSON invalid, or the output shape belongs to the other harness (Local nests it under `hookSpecificOutput`). Run the script by hand with a sample event on stdin |
 | Hooks fire twice | Plugin and `.github/hooks` both define the same hook |
 | Skill ignored | `name` differs from the folder, or description lacks the words the user says |
 

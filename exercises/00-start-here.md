@@ -36,7 +36,7 @@ Each folder has two stories. Do story 1 in the session. Story 2 is the take-home
 | 2 | [Prompts](02-prompts/README.md) | `.github/prompts/*.prompt.md` | **Local** (prompt files run only there) |
 | 3 | [Skills](03-skills/README.md) | `.github/skills/<name>/SKILL.md` | any |
 | 4 | [Custom agents](04-agents/README.md) | `.github/agents/*.agent.md` | any |
-| 5 | [Hooks](05-hooks/README.md) | `.github/hooks/*.json` | **Copilot** (shared hook runtime) |
+| 5 | [Hooks](05-hooks/README.md) | `.github/hooks/*.json` | Local or Copilot (formats differ, see the exercise) |
 | 6 | [Plugins and MCP](06-plugins/README.md) | a folder outside `.github/`, registered as a local plugin | Copilot |
 
 ## Rules of the playground
