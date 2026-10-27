@@ -17,6 +17,9 @@ Other deliberate weaknesses
 - `exercises/fixtures/review-me/`: three specs with the problems the reviewer agent should find.
 - Products load with a random 300-1700 ms delay.
 
+## Healer trap (Playwright test agents)
+The generated healer is told to fix "assertions and expected values" and not to ask questions. Pointed at `npm run test:seeded`, an unguarded healer can rewrite the correct expectations (200 to 422, 401 to 201) until everything is green. That is the lesson of exercise 4, story A3: compare the unguarded run with the guarded agents in `solutions/playwright-agents/agents/`. Reset afterwards with `git checkout tests/seeded`.
+
 ## Fixing a bug in the demo
 Fixing B1 means changing `>` to `>=` in `validateCoupon`. Do it live only to show that the seeded tests go green; revert before the next group (`git checkout app/server.js`).
 

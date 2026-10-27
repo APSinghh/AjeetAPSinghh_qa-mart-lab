@@ -3,6 +3,7 @@
 ## Before the session
 - [ ] `npm install && npx playwright install chromium` on the demo machine
 - [ ] `npm test` green, `npm run test:seeded` shows 5 failed, `npm run mcp:smoke` passes
+- [ ] In a scratch copy of the repo, `npx playwright init-agents --loop=vscode` works and **MCP: List Servers** shows `playwright-test` running (needs VS Code 1.105 or newer)
 - [ ] Nothing else on port 3000 (`lsof -i :3000`)
 - [ ] VS Code user settings: `chat.plugins.enabled: true`
 - [ ] Testers' pre-read: `exercises/00-start-here.md`. Ask them to run the setup block and tell you if any command fails
@@ -15,7 +16,7 @@
 | 0:15 | Build Instructions 1 | Demo the before and after with the locked-user prompt |
 | 0:30 | Build Prompt 1 (Local harness) | Show `${input:story}` and `argument-hint` |
 | 0:45 | Build Skill 1 | Show References proving the skill loaded without being named |
-| 1:00 | Build Agent 1 and Hook 1 | Hook 1 payoff: the agent cannot edit `app/` |
+| 1:00 | Build Agent A3 (Playwright test agents) and Hook 1 | A3 payoff: the healer must not turn planted bugs green. Hook 1 payoff: the agent cannot edit `app/` |
 | 1:30 | Live demo: build the plugin with an MCP server | Script below |
 | 1:50 | Wrap-up | Take-home: second story of each type |
 
