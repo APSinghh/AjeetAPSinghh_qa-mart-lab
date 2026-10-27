@@ -1,0 +1,77 @@
+# Start here: QA Mart agent customization playground
+
+QA Mart is a small shop app with Playwright tests, planted bugs and a set of stories. It has **no Copilot customizations of its own**. You build them, one type at a time, and then package them as a plugin.
+
+## Set up (once)
+```bash
+npm install
+npx playwright install chromium
+npm test            # should be green
+npm run test:seeded # should show 5 failures: that is on purpose
+npm run typecheck && npm run lint:specs
+```
+If port 3000 is busy, set `PORT=3100` for every command.
+
+## What you can build on
+| Ingredient | Where | Used by |
+|---|---|---|
+| Stories US-101 to US-106 | `docs/stories/` | prompts, skills, agents |
+| Team rules nobody has written down | `docs/team-conventions.md` | instructions |
+| Good examples and a bad one | `tests/tour/`, `tests/legacy/` | instructions, reviewer agent |
+| Shared fixtures and test data | `tests/fixtures.ts`, `tests/test-data.ts` | all |
+| Planted bugs, as failing tests | `npm run test:seeded` | prompts, skills, hooks |
+| JSON test report | `reports/results.json` after any `npm test` | skills, plugin MCP |
+| Weak specs to review | `exercises/fixtures/review-me/` | reviewer agent |
+| A saved failing report | `exercises/fixtures/sample-results.json` | failure-analysis skill |
+| API contract | `docs/api/openapi.yaml` | skills, MCP |
+| Typecheck and convention lint | `npm run typecheck`, `npm run lint:specs` | hooks |
+| Bug and test-case templates | `docs/templates/` | prompts |
+
+## The six exercises
+Each folder has two stories. Do story 1 in the session. Story 2 is the take-home.
+
+| # | Type | Where it goes | Harness to select in Chat |
+|---|---|---|---|
+| 1 | [Instructions](01-instructions/README.md) | `.github/copilot-instructions.md`, `.github/instructions/*.instructions.md` | any |
+| 2 | [Prompts](02-prompts/README.md) | `.github/prompts/*.prompt.md` | **Local** (prompt files run only there) |
+| 3 | [Skills](03-skills/README.md) | `.github/skills/<name>/SKILL.md` | any |
+| 4 | [Custom agents](04-agents/README.md) | `.github/agents/*.agent.md` | any |
+| 5 | [Hooks](05-hooks/README.md) | `.github/hooks/*.json` | **Copilot** (shared hook runtime) |
+| 6 | [Plugins and MCP](06-plugins/README.md) | a folder outside `.github/`, registered as a local plugin | Copilot |
+
+## Rules of the playground
+- Build in `.github/`. Do not copy from `solutions/` until you have tried. `solutions/` is not loaded by Chat.
+- Do not edit `app/` to make a test pass. That is the lesson of hook 1.
+- Start a **new chat** after adding or changing a customization, then check it was applied (below).
+
+## How to prove a customization worked
+1. Open Chat > Open Customizations and confirm the file is listed under the right type.
+2. Run a task where it should matter.
+3. Expand **References** on the response: instructions and skills that were used appear there.
+4. For anything that did not load: Chat view `...` menu > **Show Agent Debug Logs**.
+5. A plausible answer is not proof. Look for the tool call, the file reference or the denied action.
+
+Experimental or preview features (agent plugins, hooks) may need `chat.plugins.enabled` and, for local plugins, `chat.pluginLocations`. Check the reference links in `QA_References.md` if something is missing in your VS Code version.
+
+## Suggested 2-hour path
+| Time | Activity |
+|---|---|
+| 0:00 | Map of customization types and the decision flow (when to use which) |
+| 0:15 | Instructions 1 (build) |
+| 0:30 | Prompt 1 (build) |
+| 0:45 | Skill 1 (build) |
+| 1:00 | Agent 1 (build) and Hook 1 (build) |
+| 1:30 | Trainer demo: package a plugin with an MCP server |
+| 1:50 | Wrap-up: second stories as take-home, share what you built |
+
+## Decision guide
+| You want | Use |
+|---|---|
+| A rule that always applies | Instructions |
+| A rule that applies to some files | Instructions with `applyTo` |
+| One repeatable task you start by typing `/` | Prompt |
+| A multi-step method with scripts or templates, loaded when relevant | Skill |
+| A role with its own tools, or isolated context | Custom agent |
+| Something that must happen every time, no matter what the model decides | Hook |
+| Live data or actions from another system | MCP server |
+| Share a set of the above | Plugin |
