@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "apstest-qamart-plugin",
+  "version": "1.0.0",
+  "description": "QA Mart boundary testing and evidence-based triage with guarded Playwright MCP workflows.",
+  "keywords": ["qamart", "playwright", "testing", "apstest"]
+}

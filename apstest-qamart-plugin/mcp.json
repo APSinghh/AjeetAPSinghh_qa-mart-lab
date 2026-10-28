@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "apstest-playwright": {
+      "command": "npx",
+      "args": [
+        "-y", "@playwright/mcp@0.0.83",
+        "--config", "${PLUGIN_ROOT}/apstest-browser.json",
+        "--output-dir", "${PLUGIN_DATA}/apstest-browser",
+        "--headless", "--isolated",
+        "--allowed-origins", "http://localhost:*;http://127.0.0.1:*",
+        "--block-service-workers", "--no-webmcp"
+      ]
+    }
+  }
+}

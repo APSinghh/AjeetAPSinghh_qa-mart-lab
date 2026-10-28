@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "chat.plugins.enabled": true,
+    "chat.pluginLocations": {
+      "/home/ajeetsingh/Desktop/QA-Mart-TestProject/qa-mart-lab/apstest-qamart-plugin": true
+    }
+  }
+}
